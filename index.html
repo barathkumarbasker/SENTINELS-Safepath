@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safepath AI - Dashboard</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="safe-ui">
+    <div class="main-container">
+        <header class="safepath-header">
+            <img src="logo.jpg" alt="Safepath AI Logo" class="logo-img">
+            <h1 class="logo">Safepath AI</h1>
+            <p class="tagline">Predictive Safety Intelligence</p>
+        </header>
+
+        <main class="page-content">
+            <div class="dashboard-grid">
+                <div class="card safety-score-card">
+                    <div class="card-header">
+                        <span class="location-label">
+                            <img src="icons/location-pin.svg" alt="location pin" class="icon-small">
+                            Your Current Location
+                        </span>
+                        <img src="icons/shield.svg" alt="shield icon" class="icon-small safety-status-icon">
+                    </div>
+                    <div class="safety-number">
+                        <span class="score-large" id="current-safety-score">--</span>
+                        <span class="score-total">/100</span>
+                    </div>
+                    <div class="safety-status-row">
+                        <span class="status-text" id="current-safety-status">Calculating...</span>
+                        <span class="trend-indicator trend-up" id="safety-trend-indicator">---%</span>
+                    </div>
+                </div>
+
+                <div class="card sos-card" id="sos-trigger-card">
+                    <button class="sos-button" onclick="triggerOfflineSOS()">SOS</button>
+                    <p class="sos-subtext">Hold for 2 seconds</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <img src="icons/location-circle.svg" alt="location-circle" class="icon-med">
+                    <div class="stat-content">
+                        <p class="stat-label">Safe Zones</p>
+                        <p class="stat-value" id="safe-zones-count">0</p>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <img src="icons/alert-triangle.svg" alt="alert triangle" class="icon-med">
+                    <div class="stat-content">
+                        <p class="stat-label">Active Alerts</p>
+                        <p class="stat-value" id="active-alerts-count">0</p>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <img src="icons/shield-check.svg" alt="shield check" class="icon-med">
+                    <div class="stat-content">
+                        <p class="stat-label">Protected Days</p>
+                        <p class="stat-value">35</p>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <img src="icons/trend-chart.svg" alt="trend chart" class="icon-med">
+                    <div class="stat-content">
+                        <p class="stat-label">Safety Trend</p>
+                        <p class="stat-value text-up">+12%</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-actions">
+                <a href="routes.html" class="action-btn btn-blue">
+                    <img src="icons/path-node.svg" alt="path icon" class="icon-white">
+                    <div class="action-btn-text">
+                        <h3>Plan Safe Route</h3>
+                        <p>AI-powered path analysis</p>
+                    </div>
+                </a>
+                <a href="threats.html" class="action-btn btn-orange">
+                    <img src="icons/alert-octagon.svg" alt="alert icon" class="icon-white">
+                    <div class="action-btn-text">
+                        <h3>Report Threat</h3>
+                        <p>Submit Incident</p>
+                    </div>
+                </a>
+                <a href="zones.html" class="action-btn btn-purple">
+                    <img src="icons/location-map.svg" alt="map pin" class="icon-white">
+                    <div class="action-btn-text">
+                        <h3>Safety Zones</h3>
+                        <p>Manage geofences</p>
+                    </div>
+                </a>
+            </div>
+
+            <section class="recent-threats">
+                <div class="section-header">
+                    <h2>Recent Threats Nearby</h2>
+                    <a href="threats.html" class="view-all">View All</a>
+                </div>
+                <div class="threats-list-container" id="local-threats-container">
+                    <div class="empty-threats-view" id="empty-threats-view">
+                        <img src="icons/alert-triangle-dotted.svg" alt="dotted alert icon" class="icon-dotted">
+                        <p class="no-threats-text">No threat reports yet</p>
+                    </div>
+                    </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active">
+                <img src="icons/home.svg" alt="home" class="nav-icon">
+                <span>Dashboard</span>
+            </a>
+            <a href="routes.html" class="nav-item">
+                <img src="icons/path-icon.svg" alt="routes" class="nav-icon">
+                <span>Routes</span>
+            </a>
+            <a href="zones.html" class="nav-item">
+                <img src="icons/map-pin.svg" alt="zones" class="nav-icon">
+                <span>Zones</span>
+            </a>
+            <a href="threats.html" class="nav-item">
+                <img src="icons/alert-circle.svg" alt="threats" class="nav-icon">
+                <span>Threats</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="icons/settings.svg" alt="settings" class="nav-icon">
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Simulate Safety score calculation on load
+        calculateSafetyScore();
+        updateStats();
+    </script>
+</body>
+</html>

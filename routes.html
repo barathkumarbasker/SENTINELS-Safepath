@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safepath AI - Plan Route</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="safe-ui">
+    <div class="main-container">
+        <header class="safepath-header">
+            <img src="logo.jpg" alt="Safepath AI Logo" class="logo-img">
+            <h1 class="logo">Safepath AI</h1>
+            <p class="tagline">Predictive Safety Intelligence</p>
+        </header>
+
+        <main class="page-content">
+            <div class="form-container">
+                <h2 class="form-title">
+                    <img src="icons/paper-plane.svg" alt="paper plane" class="icon-small">
+                    Plan Your Route
+                </h2>
+                <form id="plan-route-form">
+                    <div class="input-group">
+                        <label for="start-point">Starting Point</label>
+                        <div class="input-with-icon">
+                            <img src="icons/map-pin-in.svg" alt="pin icon" class="icon-input">
+                            <input type="text" id="start-point" placeholder="Enter origin address">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="destination">Destination</label>
+                        <div class="input-with-icon">
+                            <img src="icons/map-pin-out.svg" alt="pin icon" class="icon-input">
+                            <input type="text" id="destination" placeholder="Enter destination address">
+                        </div>
+                    </div>
+                    <button type="submit" class="wide-btn btn-blue">
+                        <img src="icons/shield-path.svg" alt="path with shield icon" class="icon-white">
+                        Analyze Safety
+                    </button>
+                </form>
+            </div>
+
+            <div id="route-analysis-results" class="results-container initially-hidden">
+                <h3 class="results-title">Analysis Results</h3>
+                <div class="results-card card">
+                    <div class="path-guide-header">
+                        <span class="label">Primary Path (Simulated)</span>
+                        <span class="status-indicator status-safe">Highly Safe</span>
+                    </div>
+                    <ul class="path-guide-list">
+                        <li>1. Head West on <span class="loc">[Poonamallee High Road]</span> for 12 km.</li>
+                        <li>2. Take the exit towards <span class="loc">[Outer Ring Road (ORR)]</span>. <span class="path-note note-safe">(Well-lit, multi-lane highway with active patrols)</span>.</li>
+                        <li>3. Destination <span class="loc">[Panimalar Campus]</span> is on your left after 3 km.</li>
+                    </ul>
+                    <div class="path-alternative">
+                        <p class="alt-title">Alternative Path Note:</p>
+                        <p class="alt-note">Path via <span class="loc">[Inner Village Service Roads]</span> is <span class="text-down">NOT RECOMMENDED</span> at night due to low visibility and heavy, unpredictable truck traffic.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <img src="icons/home.svg" alt="home" class="nav-icon">
+                <span>Dashboard</span>
+            </a>
+            <a href="routes.html" class="nav-item active">
+                <img src="icons/path-icon.svg" alt="routes" class="nav-icon">
+                <span>Routes</span>
+            </a>
+            <a href="zones.html" class="nav-item">
+                <img src="icons/map-pin.svg" alt="zones" class="nav-icon">
+                <span>Zones</span>
+            </a>
+            <a href="threats.html" class="nav-item">
+                <img src="icons/alert-circle.svg" alt="threats" class="nav-icon">
+                <span>Threats</span>
+            </a>
+            <a href="#" class="nav-item">
+                <img src="icons/settings.svg" alt="settings" class="nav-icon">
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

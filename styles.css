@@ -1,0 +1,687 @@
+/* safepath_ai/styles.css
+    Completely self-dependent CSS. Clean, responsive UI.
+*/
+
+:root {
+    /* Color Palette derived from images */
+    --safe-blue-main: #007bff;
+    --safe-blue-light: #e0f2fe;
+    --safe-orange: #f59e0b;
+    --safe-purple: #9333ea;
+    --safe-danger: #e3342f; /* Red from SOS and threat icon */
+    
+    --bg-white: #ffffff;
+    --bg-light-gray: #f8fafc;
+    --border-gray: #e2e8f0;
+    
+    --text-main: #1e293b;
+    --text-light: #64748b;
+    --text-white: #ffffff;
+    --text-down: #ef4444; /* Negative trend */
+    --text-up: #10b981; /* Positive trend */
+    --text-warning: #f59e0b;
+    
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --header-height: 80px;
+    --nav-height: 70px;
+}
+
+/* --- Global Reset & Utilities --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Logo Styling */
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between logo and text */
+}
+
+.logo-img {
+    width: 32px; /* Adjust size as needed */
+    height: 32px;
+    object-fit: contain;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure the h1 and p don't have extra margins that break alignment */
+.safepath-header h1.logo {
+    line-height: 1;
+    margin: 0;
+}
+
+.safepath-header .tagline {
+    margin: 0;
+    margin-top: 2px;
+}
+
+body.safe-ui {
+    font-family: var(--font-family);
+    background-color: var(--bg-light-gray);
+    color: var(--text-main);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.main-container {
+    max-width: 600px; /* Mobile first max-width */
+    margin: 0 auto;
+    background-color: var(--bg-white);
+    min-height: 100vh;
+    padding-bottom: calc(var(--nav-height) + 20px); /* Extra space for nav */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+img.icon-small { width: 18px; height: 18px; }
+img.icon-input { width: 18px; height: 18px; filter: grayscale(1); opacity: 0.6;}
+img.icon-smed { width: 22px; height: 22px; }
+img.icon-med { width: 32px; height: 32px; }
+img.icon-white { filter: brightness(0) invert(1); width: 22px; height: 22px;}
+img.icon-dotted { filter: grayscale(1); opacity: 0.5; width: 48px; height: 48px;}
+
+/* Color-coded indicator from image_0.png trend row */
+.trend-indicator.trend-up {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-indicator {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.status-indicator.status-safe { background-color: #dcfce7; color: #166534; }
+.status-indicator.status-danger { background-color: #fee2e2; color: #991b1b; }
+.status-indicator.status-warning { background-color: #fffbeb; color: #92400e; }
+.status-indicator.status-small { font-size: 0.7rem; padding: 2px 6px; }
+.status-indicator.status-extra-small { font-size: 0.6rem; padding: 1px 4px; }
+
+/* Dashboard-specific status classes for safety score card */
+#current-safety-status.status-safe { color: var(--text-up); font-weight: 600;}
+#current-safety-status.status-warning { color: var(--text-warning); font-weight: 600;}
+#current-safety-status.status-danger { color: var(--text-down); font-weight: 600;}
+
+
+/* Text colors for trends/labels */
+.text-up { color: var(--text-up); font-weight: 600; }
+.text-down { color: var(--text-down); font-weight: 600; }
+.text-warning { color: var(--text-warning); font-weight: 600;}
+
+/* Utility for hiding/showing results in Route Planning */
+.initially-hidden { display: none !important; }
+.results-container { margin-top: 20px; }
+.results-title { color: var(--text-main); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; margin-left: 10px;}
+.loc { font-weight: 600; color: var(--text-main); }
+.path-guide-list li { margin-bottom: 8px; color: var(--text-light); }
+.path-guide-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border-gray); padding-bottom: 10px;}
+.path-alternative { margin-top: 20px; border-top: 1px solid var(--border-gray); padding-top: 15px; }
+.alt-title { font-weight: 600; color: var(--text-main); margin-bottom: 5px;}
+.alt-note { color: var(--text-light); font-size: 0.95rem; }
+
+/* --- Header Section --- */
+.safepath-header {
+    height: var(--header-height);
+    background-color: var(--safe-blue-main); /* Blue header from top edge in image_1.png */
+    color: var(--text-white);
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.tagline {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* --- Main Page Content & Card Styling (Referring to image_0.png & image_3.png structures) --- */
+.page-content {
+    padding: 20px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Image_0.png structure */
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.card {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    padding: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Large Safety Card (Top Left in image_0.png) */
+.safety-score-card {
+    background-color: var(--safe-blue-light);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.location-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.safety-number {
+    margin: 10px 0;
+}
+
+.score-large {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--safe-blue-main);
+}
+
+.score-total {
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0.5;
+}
+
+.safety-status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.status-text {
+    color: var(--text-main);
+    font-size: 1.1rem;
+}
+
+/* SOS Card (Top Right in image_0.png) */
+.sos-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sos-button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--safe-danger); /* Simulated from Red edge and threat icons */
+    color: var(--text-white);
+    font-size: 1.2rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(227, 52, 47, 0.4);
+    margin-bottom: 8px;
+}
+
+.sos-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(227, 52, 47, 0.4);
+}
+
+.sos-subtext {
+    font-size: 0.7rem;
+    color: var(--text-light);
+}
+
+/* Stats Cards (4 grid items in image_0.png) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* Action Buttons (Large colored buttons in image_0.png) */
+.dashboard-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-white);
+    padding: 18px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.action-btn-text h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.action-btn-text p {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.btn-blue { background-color: var(--safe-blue-main); }
+.btn-orange { background-color: var(--safe-orange); }
+.btn-purple { background-color: var(--safe-purple); }
+.btn-black { background-color: #1e293b; color: #ffffff;} /* Use from Create Zone button in image_2.png */
+
+/* Recent Threats (Referring to image_3.png for no threats state) */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-left: 5px;
+}
+
+.section-header h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.view-all {
+    font-size: 0.8rem;
+    color: var(--safe-blue-main);
+    font-weight: 600;
+}
+
+.threats-list-container {
+    padding-top: 10px;
+    min-height: 100px;
+}
+
+/* No Threat Reports Yet View (Referring to image_3.png) */
+.empty-threats-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--border-gray);
+    border-radius: 12px;
+    background-color: var(--bg-white);
+    padding: 30px;
+    min-height: 180px;
+}
+
+.no-threats-text {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 15px;
+    opacity: 0.8;
+}
+
+/* Active Threat items on dashboard */
+.threat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.threat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.threat-content h4 {
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.threat-location {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.threat-time {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+/* Specific to Threats Page full list view */
+.threats-list-container.full-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.threat-header-full { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;}
+.threat-meta { color: var(--text-light); font-size: 0.75rem;}
+.threat-loc-full { color: var(--text-main); font-weight: 600; font-size: 0.95rem; margin-bottom: 8px;}
+.threat-notes-full { color: var(--text-light); font-size: 0.85rem; background: var(--bg-light-gray); padding: 5px; border-radius: 4px; border-left: 2px solid var(--border-gray);}
+
+
+/* Specific to Zones page full list */
+.zones-list-section {
+    margin-top: 30px;
+}
+.section-title {
+    color: var(--text-main); font-size: 1.1rem; font-weight: 600; margin-bottom: 15px; margin-left: 10px;
+}
+.zones-list-container {
+    display: flex; flex-direction: column; gap: 15px;
+}
+.no-zones-text {
+    text-align: center; color: var(--text-light); padding: 20px; font-size: 0.9rem;
+}
+.zone-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 5px;
+}
+.zone-header h4 {
+    font-weight: 600; color: var(--text-main);
+}
+.zone-meta {
+    color: var(--text-light); font-size: 0.8rem; margin-bottom: 5px; margin-left: 26px;
+}
+.zone-card .status-indicator {
+    margin-left: 26px;
+}
+
+/* --- Form Control Styling (Referring to image_1.png and image_2.png) --- */
+.form-container {
+    margin-bottom: 20px;
+}
+
+.form-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-main);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.flex-1 { flex: 1; }
+.flex-2 { flex: 2; }
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-gray);
+    border-radius: 8px;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    color: var(--text-main);
+    background-color: var(--bg-white);
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #cbd5e1; /* Replicating pale placeholder from image_1.png */
+}
+
+.input-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-icon .icon-input {
+    position: absolute;
+    left: 10px;
+}
+
+.input-with-icon input {
+    padding-left: 36px;
+}
+
+.input-subtext {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    opacity: 0.7;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+.input-subtext-note {
+    font-size: 0.7rem; color: var(--safe-orange); margin-top: 3px; font-style: italic;
+}
+
+.inline-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* Switch styling from image_2.png */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1; /* Gray state */
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #1e293b; /* Dark active state from image_2.png */
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Button Classes */
+.wide-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.wide-btn:active {
+    transform: translateY(1px);
+}
+
+.text-btn {
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.2s ease;
+}
+
+.text-btn:hover {
+    color: var(--text-main);
+}
+
+.form-actions-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    align-items: center;
+}
+
+/* --- Bottom Navigation Section --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    height: var(--nav-height);
+    background-color: var(--bg-white);
+    border-top: 1px solid var(--border-gray);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-light); /* Default color from bottom row in images */
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 2px;
+    filter: grayscale(1);
+    opacity: 0.6;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: var(--safe-blue-main); /* Blue from active state in bottom nav of images */
+    opacity: 1;
+}
+
+.nav-item.active .nav-icon {
+    filter: none;
+    opacity: 1;
+}
+
+/* --- Mobile First and Responsiveness --- */
+@media screen and (min-width: 601px) {
+    .main-container {
+        border-radius: 12px;
+        margin-top: 20px;
+        margin-bottom: calc(var(--nav-height) + 20px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+}
