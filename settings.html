@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safepath AI - Settings</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="safe-ui">
+    <div class="main-container">
+        <header class="safepath-header">
+            <img src="logo.jpg" alt="Safepath AI Logo" class="logo-img">
+            <h1 class="logo">Safepath AI</h1>
+            <p class="tagline">Predictive Safety Intelligence</p>
+        </header>
+
+        <main class="page-content">
+            <section class="form-container">
+                <h2 class="form-title">
+                    <img src="icons/settings.svg" alt="settings icon" class="icon-small">
+                    User Preferences
+                </h2>
+
+                <div class="settings-group">
+                    <h3 class="section-title">Profile</h3>
+                    <div class="card settings-card">
+                        <div class="settings-item">
+                            <span>Username</span>
+                            <span class="text-light">Guest User</span>
+                        </div>
+                        <div class="settings-item">
+                            <span>Emergency Contact</span>
+                            <span class="text-light">+91 XXXXX XXXXX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <h3 class="section-title">Application</h3>
+                    <div class="card settings-card">
+                        <div class="settings-item">
+                            <label for="offline-mode">Priority Offline Maps</label>
+                            <input type="checkbox" id="offline-mode" checked>
+                        </div>
+                        <div class="settings-item">
+                            <label for="safety-alerts">Push Safety Alerts</label>
+                            <input type="checkbox" id="safety-alerts" checked>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-group">
+                    <h3 class="section-title">Information</h3>
+                    <div class="card settings-card">
+                        <div class="settings-item">
+                            <a href="aboutus.html" class="settings-link">
+                                <span><b>About the Team</b></span>
+                                <span class="chevron-icon">›</span>
+                            </a>
+                        </div>
+                        <div class="settings-item">
+                            <span>App Version</span>
+                            <span class="text-light">v1.1.2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <h3 class="section-title">Privacy & Data</h3>
+                    <div class="card settings-card">
+                        <button class="wide-btn btn-outline" id="clear-data-btn" style="color: var(--safe-danger); border-color: var(--safe-danger);">
+                            Clear Local Storage Data
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <img src="icons/home.svg" alt="home" class="nav-icon">
+                <span>Dashboard</span>
+            </a>
+            <a href="routes.html" class="nav-item">
+                <img src="icons/path-icon.svg" alt="routes" class="nav-icon">
+                <span>Routes</span>
+            </a>
+            <a href="zones.html" class="nav-item">
+                <img src="icons/map-pin.svg" alt="zones" class="nav-icon">
+                <span>Zones</span>
+            </a>
+            <a href="threats.html" class="nav-item">
+                <img src="icons/alert-circle.svg" alt="threats" class="nav-icon">
+                <span>Threats</span>
+            </a>
+            <a href="settings.html" class="nav-item active">
+                <img src="icons/settings.svg" alt="settings" class="nav-icon">
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

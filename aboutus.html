@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safepath AI - About Us</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Rainbow Theme Overrides */
+        .rainbow-text {
+            background: linear-gradient(to right, #ef4444, #f59e0b, #10b981, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .team-container {
+            margin-top: 20px;
+        }
+
+        .team-title {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #e2e8f0;
+        }
+
+        /* Individual Member Rainbow Borders */
+        .member-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            background: var(--bg-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .member-card:hover {
+            transform: scale(1.02);
+        }
+
+        /* Rainbow sequence for borders */
+        .member-card:nth-child(2) { border-left: 5px solid #ef4444; } /* Red */
+        .member-card:nth-child(3) { border-left: 5px solid #f59e0b; } /* Orange */
+        .member-card:nth-child(4) { border-left: 5px solid #10b981; } /* Green */
+        .member-card:nth-child(5) { border-left: 5px solid #3b82f6; } /* Blue */
+
+        .member-name {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .member-id {
+            color: var(--text-light);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .project-intro {
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            padding: 15px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #fff1f2 100%);
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="safe-ui">
+    <div class="main-container">
+        <header class="safepath-header">
+            <img src="logo.jpg" alt="Safepath AI Logo" class="logo-img">
+            <h1 class="logo">Safepath AI</h1>
+            <p class="tagline">Predictive Safety Intelligence</p>
+        </header>
+
+        <main class="page-content">
+            <div class="card">
+                <h2 class="form-title rainbow-text">About the Project</h2>
+                <p class="project-intro">
+                    Safepath AI is a Predictive Safety Intelligence platform designed to enhance urban security through real-time data analysis. By integrating live incident reporting, safety zone management, and intelligent routing, the application empowers users to navigate their environment with confidence. Our mission is to leverage technology to create a safer, more transparent community experience.
+                </p>
+
+                <div class="team-container">
+                    <h3 class="team-title rainbow-text">CSE - I SENTINELS: APP BASED PROJECT</h3>
+                    
+                    <div class="member-card">
+                        <span class="member-name">BARATH KUMAR BASKER</span>
+                        <span class="member-id">2025PECCS628</span>
+                    </div>
+
+                    <div class="member-card">
+                        <span class="member-name">CHIMAN THIRUMURUGAN</span>
+                        <span class="member-id">2025PECCS641</span>
+                    </div>
+
+                    <div class="member-card">
+                        <span class="member-name">CHIRANJEEVI.B</span>
+                        <span class="member-id">2025PECCS642</span>
+                    </div>
+
+                    <div class="member-card">
+                        <span class="member-name">DHANUSH.H</span>
+                        <span class="member-id">2025PECCS660</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <img src="icons/home.svg" alt="home" class="nav-icon">
+                <span>Dashboard</span>
+            </a>
+            <a href="routes.html" class="nav-item">
+                <img src="icons/path-icon.svg" alt="routes" class="nav-icon">
+                <span>Routes</span>
+            </a>
+            <a href="zones.html" class="nav-item">
+                <img src="icons/map-pin.svg" alt="zones" class="nav-icon">
+                <span>Zones</span>
+            </a>
+            <a href="threats.html" class="nav-item">
+                <img src="icons/alert-circle.svg" alt="threats" class="nav-icon">
+                <span>Threats</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <img src="icons/settings.svg" alt="settings" class="nav-icon">
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

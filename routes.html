@@ -44,24 +44,26 @@
             </div>
 
             <div id="route-analysis-results" class="results-container initially-hidden">
-                <h3 class="results-title">Analysis Results</h3>
+                <h3 class="results-title" id="analysis-title">Analysis Results (Offline)</h3>
                 <div class="results-card card">
                     <div class="path-guide-header">
-                        <span class="label">Primary Path (Simulated)</span>
-                        <span class="status-indicator status-safe">Highly Safe</span>
+                        <span class="label" id="path-label">Primary Path (Simulated)</span>
+                        <span class="status-indicator status-safe" id="safety-badge">Highly Safe</span>
                     </div>
-                    <ul class="path-guide-list">
+                    <ul class="path-guide-list" id="guide-list">
                         <li>1. Head West on <span class="loc">[Poonamallee High Road]</span> for 12 km.</li>
                         <li>2. Take the exit towards <span class="loc">[Outer Ring Road (ORR)]</span>. <span class="path-note note-safe">(Well-lit, multi-lane highway with active patrols)</span>.</li>
                         <li>3. Destination <span class="loc">[Panimalar Campus]</span> is on your left after 3 km.</li>
                     </ul>
-                    <div class="path-alternative">
-                        <p class="alt-title">Alternative Path Note:</p>
-                        <p class="alt-note">Path via <span class="loc">[Inner Village Service Roads]</span> is <span class="text-down">NOT RECOMMENDED</span> at night due to low visibility and heavy, unpredictable truck traffic.</p>
-                    </div>
+                <div class="path-alternative" id="alt-path-section">
+                    <p class="alt-title">Alternative Path Note:</p>
+                    <p class="alt-note" id="alt-note-text">Path via <span class="loc">[Inner Village Service Roads]</span> is <span class="text-down">NOT RECOMMENDED</span> at night due to low visibility and heavy, unpredictable truck traffic.</p>
+                </div>
                 </div>
             </div>
+            
         </main>
+        
 
         <nav class="bottom-nav">
             <a href="index.html" class="nav-item">
@@ -80,7 +82,7 @@
                 <img src="icons/alert-circle.svg" alt="threats" class="nav-icon">
                 <span>Threats</span>
             </a>
-            <a href="#" class="nav-item">
+            <a href="settings.html" class="nav-item active">
                 <img src="icons/settings.svg" alt="settings" class="nav-icon">
                 <span>Settings</span>
             </a>

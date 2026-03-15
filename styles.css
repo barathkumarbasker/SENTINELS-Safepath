@@ -685,3 +685,47 @@ input:checked + .slider:before {
         box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 }
+
+/* --- Settings Specific Styles --- */
+.settings-group {
+    margin-bottom: 25px;
+}
+
+.settings-card {
+    padding: 0; /* Let items handle padding */
+    overflow: hidden;
+}
+
+.settings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-gray);
+    font-size: 0.95rem;
+}
+
+.settings-item:last-child {
+    border-bottom: none;
+}
+
+.settings-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--safe-blue-main);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-gray);
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background: #fff5f5;
+}
