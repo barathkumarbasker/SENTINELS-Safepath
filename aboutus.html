@@ -19,13 +19,39 @@
             margin-top: 20px;
         }
 
-        .team-title {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 2px dashed #e2e8f0;
-        }
+        /* Update the Team Title to support Dark Mode */
+    .team-title {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        text-align: center;
+        padding-bottom: 10px;
+        /* Changed from #e2e8f0 to the variable */
+        border-bottom: 2px dashed var(--border-gray); 
+        color: var(--text-main);
+    }
+
+    /* Update the Project Intro to support Dark Mode */
+    .project-intro {
+        line-height: 1.6;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid var(--border-gray);
+        
+        /* Use variables for text and background */
+        color: var(--text-main);
+        background: var(--bg-light-gray); 
+        
+        /* Optional: subtle glass effect for dark mode */
+        transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* Specifically adjust the background for Dark Mode if you want a slight tint */
+    body.dark-theme .project-intro {
+        background: rgba(255, 255, 255, 0.05); /* Very light transparent white */
+        border-color: #475569;
+    }
 
         /* Individual Member Rainbow Borders */
         .member-card {
@@ -34,11 +60,12 @@
             align-items: center;
             padding: 12px 15px;
             margin-bottom: 12px;
-            background: var(--bg-white);
+            background: var(--bg-white); /* This variable is key! */
             border-radius: 8px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            color: var(--text-main);
         }
+        
 
         .member-card:hover {
             transform: scale(1.02);
@@ -83,6 +110,11 @@
             <img src="logo.jpg" alt="Safepath AI Logo" class="logo-img">
             <h1 class="logo">Safepath AI</h1>
             <p class="tagline">Predictive Safety Intelligence</p>
+    
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <svg id="sun-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
         </header>
 
         <main class="page-content">

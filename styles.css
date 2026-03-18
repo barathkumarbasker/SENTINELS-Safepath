@@ -2,6 +2,50 @@
     Completely self-dependent CSS. Clean, responsive UI.
 */
 
+/* --- Dark Theme Variables --- */
+body.dark-theme {
+    --bg-white: #1e293b;        /* Dark slate blue */
+    --bg-light-gray: #0f172a;   /* Deeper background */
+    --border-gray: #334155;
+    --text-main: #f8fafc;       /* Off-white text */
+    --text-light: #94a3b8;
+}
+
+/* Specific component adjustments for Dark Mode */
+body.dark-theme .card, 
+body.dark-theme .form-container,
+body.dark-theme .settings-card,
+body.dark-theme .bottom-nav {
+    background-color: var(--bg-white);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+body.dark-theme input, 
+body.dark-theme select {
+    background-color: #334155;
+    color: white;
+    border-color: #475569;
+}
+
+/* Theme Toggle Button Styling */
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.theme-toggle-btn:hover {
+    background: var(--safe-blue-light);
+}
+
+.hidden { display: none; }
+
 :root {
     /* Color Palette derived from images */
     --safe-blue-main: #007bff;
@@ -728,4 +772,15 @@ input:checked + .slider:before {
 
 .btn-outline:hover {
     background: #fff5f5;
+}
+
+/* Add to styles.css */
+body.dark-theme .news-card {
+    background-color: var(--bg-white);
+    border-color: var(--safe-blue-main);
+    border-left-width: 4px;
+}
+
+body.dark-theme .news-title {
+    color: var(--text-main);
 }

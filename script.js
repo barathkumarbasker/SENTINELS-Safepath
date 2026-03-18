@@ -469,3 +469,36 @@ if (safetyCard) {
     safetyCard.addEventListener('click', updateDynamicSafetyScore);
     safetyCard.style.cursor = "pointer"; // Makes it look clickable
 }
+
+// --- Theme Switcher Logic ---
+const themeToggle = document.getElementById('theme-toggle');
+const sunIcon = document.getElementById('sun-icon');
+const moonIcon = document.getElementById('moon-icon');
+
+// Function to apply theme
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-theme');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+    } else {
+        document.body.classList.remove('dark-theme');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+    }
+}
+
+// Check LocalStorage on Load
+const savedTheme = localStorage.getItem('safepath-theme') || 'light';
+applyTheme(savedTheme);
+
+// Toggle Click Event
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const isDark = document.body.classList.contains('dark-theme');
+        const newTheme = isDark ? 'light' : 'dark';
+        
+        localStorage.setItem('safepath-theme', newTheme);
+        applyTheme(newTheme);
+    });
+}
