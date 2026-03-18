@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safepath AI - Assistant</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="safe-ui">
+    <div class="main-container">
+        <header class="safepath-header">
+            <img src="logo.jpg" alt="Safepath AI Logo" class="logo-img">
+            <h1 class="logo">Safepath AI</h1>
+            <p class="tagline">Safety Intelligence Assistant</p>
+    
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <svg id="sun-icon" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg id="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </header>
+
+        <main class="page-content">
+            <div id="ai-status-banner" class="status-banner">Checking status...</div>
+            
+            <div id="chat-container" class="chat-container">
+                <div id="chat-display" class="chat-display">
+                    <div class="message ai-message">
+                        Hello! I am the Safepath AI. I can assist you with <strong>Safety Location</strong> queries. How can I help today?
+                    </div>
+                </div>
+                
+                <div class="chat-input-row">
+                    <input type="text" id="ai-input" placeholder="Ask Safepath anything...">
+                <button id="ai-send-btn" class="btn-blue">Send</button>
+                </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item">
+                <img src="icons/home.svg" alt="home" class="nav-icon">
+                <span>Home</span>
+            </a>
+            <a href="routes.html" class="nav-item">
+                <img src="icons/path-icon.svg" alt="routes" class="nav-icon">
+                <span>Routes</span>
+            </a>
+            <a href="zones.html" class="nav-item">
+                <img src="icons/map-pin.svg" alt="zones" class="nav-icon">
+                <span>Zones</span>
+            </a>
+            <a href="threats.html" class="nav-item">
+                <img src="icons/alert-circle.svg" alt="threats" class="nav-icon">
+                <span>Threats</span>
+            </a>
+            <a href="ai.html" class="nav-item active">
+                <img src="icons/cpu.svg" alt="ai" class="nav-icon">
+                <span>Assistant</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <img src="icons/settings.svg" alt="settings" class="nav-icon">
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="safepathai.js"></script>
+</body>
+</html>
