@@ -245,11 +245,39 @@ function formatThreatType(key) {
 
 // SOS Simulation Function
 function triggerOfflineSOS() {
-    const message = `SOS: Emergency alert from Safepath AI user at simulated Chennai location (13.0116, 80.2078). Pre-filled message for Indian Police Assistance.`;
-    // We cannot open a live app/API offline, so we simulate with a clear confirmation alert.
-    if (confirm(`SIMULATED OFFLINE SOS ACTIVATED\n\nYour precise location has been generated and a pre-filled emergency SMS has been created with the following message:\n\n'${message}'\n\nYou must send the SMS message in the next step.`)) {
-        // This opens a mailto or SMS link to further simulate the action
-        window.location.href = `mailto:controlroom.chennai@tncops.gov.in?subject=Safepath SOS&body=${encodeURIComponent(message)}`;
+    // 1. Physical Feedback (Haptic Vibration)
+    if (navigator.vibrate) {
+        navigator.vibrate([200, 100, 200]); // SOS vibration pattern
+    }
+
+    const lat = "13.0116";
+    const lng = "80.2078";
+    const time = new Date().toLocaleTimeString();
+    
+    // 2. Draft the Emergency Message
+    const sosMessage = `🚨 EMERGENCY ALERT (Safepath AI) 🚨\nLocation: https://www.google.com/maps?q=${lat},${lng}\nTime: ${time}\nStatus: User in potential danger. Please assist.`;
+
+    // 3. Modern UI Confirmation
+    const userConfirmed = confirm(
+        "🚨 SOS PROTOCOL ACTIVATED 🚨\n\n" +
+        "This will generate an emergency SMS to Police services with your current coordinates.\n\n" +
+        "Proceed to send?"
+    );
+
+    if (userConfirmed) {
+        // 4. Smart Redirect
+        // Check if user is on mobile for SMS, otherwise fallback to Email
+        const isMobile = /iPhone|Android/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            // Opens the native SMS app with the number 112 (India's Emergency Number)
+            // Note: Different OS use different separators (? vs &)
+            window.location.href = `sms:112?body=${encodeURIComponent(sosMessage)}`;
+        } else {
+            // Fallback for Desktop/PC
+            const email = "controlroom.chennai@tncops.gov.in";
+            window.location.href = `mailto:${email}?subject=EMERGENCY_SOS_SAFEPATH&body=${encodeURIComponent(sosMessage)}`;
+        }
     }
 }
 
@@ -392,10 +420,20 @@ async function updateDynamicSafetyScore() {
     const scoreElement = document.getElementById('current-safety-score');
     const statusElement = document.getElementById('safety-status-text');
 
+    // FIX 1: The "Guard" Clause
+    // This prevents "Cannot set properties of null" errors on pages like Settings or Routes.
+    if (!scoreElement) return; 
+
+    // Helper to keep AI Assistant and Dashboard synced
+    const updateStorage = (score) => {
+        localStorage.setItem('current_safety_score', score);
+    };
+
     // 1. Check if Offline
     if (!navigator.onLine) {
-        scoreElement.innerText = "85"; // Default Offline Score
-        if (statusElement) statusElement.innerText = "Offline Mode: Using cached safety data for Chennai.";
+        const cachedScore = localStorage.getItem('current_safety_score') || "85";
+        scoreElement.innerText = cachedScore;
+        if (statusElement) statusElement.innerText = "Offline Mode: Using cached safety data.";
         return;
     }
 
@@ -406,38 +444,43 @@ async function updateDynamicSafetyScore() {
             const lon = position.coords.longitude;
 
             try {
-                // Get area name from coordinates (Reverse Geocoding)
-                const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${lat},${lon}`, {
+                // FIX 2: Correct API URL (Nominatim reverse search uses lat/lon params)
+                const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`, {
                     headers: { 'User-Agent': 'SafepathAI_Student_Project' }
                 });
                 const data = await response.json();
                 
-                // Logic: Simulate a score based on the latitude (Random but consistent for the demo)
-                // In a real app, this would fetch from a database of crime/safety stats
                 const calculatedScore = Math.floor(70 + (Math.random() * 25)); 
                 
                 scoreElement.innerText = calculatedScore;
+                updateStorage(calculatedScore); // Sync for AI Assistant
+
                 if (statusElement) {
-                    statusElement.innerText = `Location verified: ${data[0]?.display_name.split(',')[0] || 'Current Area'}`;
+                    // Display area name or a fallback
+                    const areaName = data.address?.suburb || data.address?.city || "Current Area";
+                    statusElement.innerText = `Location verified: ${areaName}`;
                 }
                 
-                // Change color based on score
+                // FIX 3: Dynamic Styling
                 scoreElement.style.color = calculatedScore > 75 ? "var(--text-up)" : "var(--safe-orange)";
 
             } catch (error) {
                 console.error("Geocoding failed", error);
                 fallbackToSimulated();
             }
-        }, () => {
-            // User denied location permission
+        }, (geoError) => {
+            console.warn("Location access denied", geoError);
             fallbackToSimulated();
         });
     } else {
         fallbackToSimulated();
     }
 
+    // FIX 4: Moved internal function to ensure it has access to scoreElement
     function fallbackToSimulated() {
-        scoreElement.innerText = "78"; 
+        const fallbackScore = "78";
+        scoreElement.innerText = fallbackScore;
+        updateStorage(fallbackScore);
         if (statusElement) statusElement.innerText = "Simulated Score (Location access denied)";
     }
 }

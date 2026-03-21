@@ -6,6 +6,9 @@
     <title>Safepath AI - Plan Route</title>
     <link rel="icon" type="image/png" href="logo.jpg">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
 </head>
 <body class="safe-ui">
     <div class="main-container">
@@ -26,6 +29,16 @@
                     <img src="icons/paper-plane.svg" alt="paper plane" class="icon-small">
                     Plan Your Route
                 </h2>
+                <div class="map-section card">
+                    <div id="route-map" style="height: 350px; width: 100%; border-radius: 12px; z-index: 1;">
+                        <div class="heatmap-legend">
+                            <div class="legend-item"><span class="dot red"></span> High Alert</div>
+                            <div class="legend-item"><span class="dot yellow"></span> Caution</div>
+                            <div class="legend-item"><span class="dot green"></span> Monitored</div>
+                        </div>
+                    </div>
+                    <p class="map-instruction">Tap the map to set <b>Start</b>, then tap again for <b>Destination</b>.</p>
+                </div>
                 <form id="plan-route-form">
                     <div class="input-group">
                         <label for="start-point">Starting Point</label>
@@ -87,16 +100,17 @@
                 <img src="icons/alert-circle.svg" alt="threats" class="nav-icon">
                 <span>Threats</span>
             </a>
-            <a href="ai.html" class="nav-item active">
+            <a href="ai.html" class="nav-item">
                 <img src="icons/cpu.svg" alt="ai" class="nav-icon">
                 <span>Assistant</span>
             </a>
-            <a href="settings.html" class="nav-item active">
+            <a href="settings.html" class="nav-item">
                 <img src="icons/settings.svg" alt="settings" class="nav-icon">
                 <span>Settings</span>
             </a>
         </nav>
     </div>
     <script src="script.js"></script>
+    <script src="routes.js"></script>
 </body>
 </html>
